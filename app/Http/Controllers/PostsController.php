@@ -25,13 +25,7 @@ class PostsController extends Controller
 
     {
         $posts = Post::all();
-        //return Post::where('title', 'Post Two')->get();
-        //$posts = DB::select('SELECT * FROM posts');
-        //$posts = Post::orderBy('title','desc')->take(1)->get();
-        //$posts = Post::orderBy('title','desc')->get();
 
-
-        // $posts = Post::orderBy('created_at','desc');
         return view('index')->with('posts', $posts);
         //printf($posts);
 
@@ -55,9 +49,7 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,User $user){
-        // $this->validate($request,[
-        // 'img' => 'image|nullable|max:1999'
-        // ]);
+
 
 
         $input = $request->all();
@@ -66,12 +58,7 @@ class PostsController extends Controller
             $fileNameWithExt = $request->file('img')->getClientOriginalName();
 
             $path = $request->file('img')->storeAs('public/ads', $fileNameWithExt);
-            // foreach($request->file('img') as $image){
-            //     $size = $image->getSize();
-            //     $name = $image->getClientOriginalName();
-            //     $image->move(public_path().'ads',$name);
-            //     $data[] = [$size,$name];
-            // }
+
                 $id = auth()->user()->id;
 
             Post::insert([
@@ -88,18 +75,7 @@ class PostsController extends Controller
             //    'imgUrl1' => implode("|",$data),
                 'imgUrl1' => $fileNameWithExt
             ]);
-            // $post = new Post();
-            // $post->category = request('category');
-            // $post->pname = request('pname');
-            // $post->user_id = auth()->user()->id;
-            // $post->condition = request('condition');
-            // $post->shortDesc = request('shortDesc');
-            // $post->price = request('price');
-            // $post->details = request('details');
-            // $post->location = request('location');
-            // // $post->imgUrl1 = json_encode($data);
-            // $post->imgUrl1 = request('img');
-            // $post->save();
+
             return redirect('/info');
 
 
@@ -155,14 +131,13 @@ class PostsController extends Controller
     }
     public function search(Request $request){
         $search = $request->get('search');
-        // $posts = DB::table('posts')->where('name','like','%'.$search.'%')->paginate(10);
-        // $post = DB::select('SELECT * FROM posts');
-        // $post = Post::all()->paginate(2);
+
         $post = \DB::table('posts')->where('pname','like','%'.$search.'%')->paginate(10);
         return view('pages.search')->with('posts',$post);
 
     }
     public function load_category($category){
+
         $post = \DB::table('posts')->where('category','like','%'.$category. '%')->paginate(10);
         return view('pages.single')->with('post',$post);
 

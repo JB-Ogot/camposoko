@@ -71,7 +71,7 @@
           </div>
         <!-- </div> -->
 
-        </header>
+    </header>
 
 
 
@@ -95,7 +95,7 @@
       </div>
     </div>
 
-    <div class="site-section">
+    <<div class="site-section">
             @foreach ($post as $post)
       <div class="container">
 
@@ -108,7 +108,7 @@
                 <div class="col-lg-6">
 
                   <div class="d-block d-md-flex listing vertical">
-                  <a href="" class="img d-block" style="background-image: url('images/img_1.jpg')"></a>
+                    <a href="#" class="img d-block" style="background-image: url('images/img_1.jpg')"></a>
                     <div class="lh-content">
                     <span class="category"></span>
                       <a href="#" class="bookmark"><span class="icon-heart"></span></a>
@@ -137,7 +137,6 @@
         </div>
         @endforeach
     </div>
-
   </div>
 
   <script  src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>

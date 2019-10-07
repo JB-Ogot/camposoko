@@ -229,13 +229,11 @@
                         <div class="owl-carousel nonloop-block-13">
 
                          @foreach ($posts as $post)
+                         @if(@isset($post->imgUrl1))
 
                          <div class="d-block d-md-flex listing vertical">
-                         <a href="/single/{{$post->id}}" class="img d-block" style="background-image: url('{{asset('storage/ads/'.$post->imgUrl1)}}')"></a>
-                         {{-- <a href="" class="img d-block"><img src="{{asset('storage/ads/'.$post->imgUrl1.'')}}" alt="not found"></a> --}}
-                                {{-- <div class="img d-block">
-                                    <img src="storage/ads/{{$post->imgUrl1}}" alt="not found">
-                                </div> --}}
+                         <a href="" class="img d-block"><img src="{{ asset('storage/ads/'.$post->imgUrl1) }}" alt="not found"></a>
+
                                 <div class="lh-content">
                                 <span class="category">{{$post->category}}</span>
                                 <a href="#" class="bookmark">{{$post->condition}}</span></a>
@@ -246,6 +244,7 @@
 
                                 </div>
                               </div>
+                              @endif
 
                          @endforeach
                         </div>
