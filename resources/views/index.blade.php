@@ -232,7 +232,7 @@
                          @if(@isset($post->imgUrl1))
 
                          <div class="d-block d-md-flex listing vertical">
-                         <a href="" class="img d-block"><img src="{{ asset('storage/ads/'.$post->imgUrl1) }}" alt="not found"></a>
+                         <a href="/single/{{$post->id}}" method = "post" class="img d-block"><img src="{{ asset('storage/ads/'.$post->imgUrl1) }}" alt="not found"></a>
 
                                 <div class="lh-content">
                                 <span class="category">{{$post->category}}</span>

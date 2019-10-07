@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Database\Eloquent\Model;
 //use \Input as Input;
 use Symfony\Component\Console\Input\Input;
@@ -54,10 +55,14 @@ class PostsController extends Controller
 
         $input = $request->all();
         if($request->hasFile('img')){
+            $img = $request->file('img');
 
-            $fileNameWithExt = $request->file('img')->getClientOriginalName();
-
-            $path = $request->file('img')->storeAs('public/ads', $fileNameWithExt);
+            $fileNameWithExt = $img->getClientOriginalName();
+            $img2 = Image::make($img->getRealPath());
+            $img = $img2->resize(1900,1600);
+            //$image_resize->save(public_path('images/ServiceImages/' .$filename));
+            $img2->save(public_path('storage/ads/' .$fileNameWithExt));
+            //$path = $img2->storeAs('public/ads', $fileNameWithExt);
 
                 $id = auth()->user()->id;
 
@@ -136,12 +141,12 @@ class PostsController extends Controller
         return view('pages.search')->with('posts',$post);
 
     }
-    public function load_category($category){
+    // public function load_category($category){
 
-        $post = \DB::table('posts')->where('category','like','%'.$category. '%')->paginate(10);
-        return view('pages.single')->with('post',$post);
+    //     $post = \DB::table('posts')->where('category','like','%'.$category. '%')->paginate(10);
+    //     return view('pages.single')->with('post',$post);
 
-    }
+    // }
     public function load_single($id){
         $post = \DB::table('posts')->where('id','like','%'.$id. '%');
         return view('pages.lone')->with('post',$post);

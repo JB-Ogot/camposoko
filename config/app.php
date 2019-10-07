@@ -167,6 +167,7 @@ return [
          */
         SmoDav\Mpesa\Laravel\ServiceProvider::class,
         Safaricom\Mpesa\MpesaServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -231,7 +232,9 @@ return [
         'Simulate'  => SmoDav\Mpesa\Laravel\Facades\Simulate::class,
         'Registrar' => SmoDav\Mpesa\Laravel\Facades\Registrar::class,
         'Identity'  => SmoDav\Mpesa\Laravel\Facades\Identity::class,
-        'Mpesa'=> Safaricom\Mpesa\MpesaServiceProvider::class
+        'Mpesa'=> Safaricom\Mpesa\MpesaServiceProvider::class,
+        'Image' => Intervention\Image\Facades\Image::class
+
 
     ],
 
