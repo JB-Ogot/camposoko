@@ -143,6 +143,14 @@
         </div>
 </div>
 
+<footer class="card-footer fixed-bottom" id="footer">
+
+        <p>
+            &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited
+
+        </p>
+      </footer>
+
 <script type="text/javascript">
     document.mainform.onclick = function() {
     var x = document.querySelector('input[name=package]:checked').value;

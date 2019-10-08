@@ -4,6 +4,13 @@
  	once: true
  });
 
+ function openLone(id){
+     event.preventDefault();
+     var url="/single/?id="+id;
+
+     window.open(url,'_self');
+ }
+
 jQuery(document).ready(function($) {
 
 	"use strict";

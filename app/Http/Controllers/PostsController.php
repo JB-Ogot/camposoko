@@ -20,12 +20,13 @@ class PostsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except'=>['index','show', 'search']]);
+        $this->middleware('auth',['except'=>['index','show', 'search','load_single']]);
     }
     public function index()
 
     {
-        $posts = Post::all();
+        // $posts = Post::orderBy('id','DESC')->get(10);
+        $posts = Post::latest()->get();
 
         return view('index')->with('posts', $posts);
         //printf($posts);
@@ -132,6 +133,7 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
+        $posts = auth()->user()->posts()->orderBy('updated_at', 'DESC');
         //
     }
     public function search(Request $request){
@@ -140,6 +142,8 @@ class PostsController extends Controller
         $post = \DB::table('posts')->where('pname','like','%'.$search.'%')->paginate(10);
         return view('pages.search')->with('posts',$post);
 
+        // print($post->id);
+
     }
     // public function load_category($category){
 
@@ -147,10 +151,17 @@ class PostsController extends Controller
     //     return view('pages.single')->with('post',$post);
 
     // }
-    public function load_single($id){
-        $post = \DB::table('posts')->where('id','like','%'.$id. '%');
-        return view('pages.lone')->with('post',$post);
+    public function load_single(){
+        $id = request('id');
+        // $post = \DB::table('posts')->where('id','like','%'.$id. '%');
 
+        // return view('pages.lone')->with('post',$post);
+
+        $post = Post::all();
+        foreach($post as $post){
+            if($post->id == $id)
+               return view('pages.lone')->with('post',$post);
+        }
     }
 
 

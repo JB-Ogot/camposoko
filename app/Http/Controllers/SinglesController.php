@@ -23,7 +23,18 @@ class SinglesController extends Controller
     public function elec(){
         $category = "Electronics";
         $post = \DB::table('posts')->where('category','like','%'.$category. '%')->paginate(10);
-        return view('pages.single')->with('post',$post);
+        // $post = Post::all();
+        // foreach($post as $post){
+        //     if($post->category == $category){
+                return view('pages.single')->with('post',$post);
+        //         // print($post->category);
+        //         // print($post->imgUrl1);
+
+
+        //     }
+
+        // }
+
     }
     public function house(){
         $category = "Household Items";

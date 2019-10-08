@@ -6,22 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css') }}">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
 
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="{{ asset('fonts/flaticon/font/flaticon.css') }}">
 
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/rangeslider.css">
+    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/rangeslider.css') }}">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script data-ad-client="ca-pub-7173197345625982" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
   </head>
@@ -76,7 +76,7 @@
 
 
 
-    <div class="site-blocks-cover overlay aos-init aos-animate" style="background-image: url(&quot;images/webe.jpg&quot;); background-position: 50% -25px;" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="site-blocks-cover overlay aos-init aos-animate" style="background-image: url(&quot;images/home.jpg&quot;); background-position: 50% -25px;" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
 
@@ -232,7 +232,9 @@
                          @if(@isset($post->imgUrl1))
 
                          <div class="d-block d-md-flex listing vertical">
-                         <a href="/single/{{$post->id}}" method = "post" class="img d-block"><img src="{{ asset('storage/ads/'.$post->imgUrl1) }}" alt="not found"></a>
+                         <a  method = "post" class="img d-block" onclick="openLone({{$post->id}})">
+                            <img src="{{ asset('storage/ads/'.$post->imgUrl1) }}" alt="not found" class="responsive">
+                        </a>
 
                                 <div class="lh-content">
                                 <span class="category">{{$post->category}}</span>
@@ -258,16 +260,13 @@
 </div>
 </div>
 
-<div class="container">
-
-    <footer class="card-footer" id="footer">
+    <footer class="card-footer fixed-bottom" id="footer">
 
         <p>
             &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited
 
         </p>
       </footer>
-</div>
 
   <script src="https://kit.fontawesome.com/01f884af7a.js" crossorigin="anonymous"></script>
 

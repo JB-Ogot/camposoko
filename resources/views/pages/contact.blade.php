@@ -232,13 +232,14 @@
     </div>
 
 
-    <footer class="card-footer" id="footer">
 
-      <p>
-          &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited
+    <footer class="card-footer fixed-bottom" id="footer">
 
-      </p>
-    </footer>
+            <p>
+                &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited
+
+            </p>
+          </footer>
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>

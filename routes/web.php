@@ -59,7 +59,7 @@ Route::post('/posts/authenticated','PostsController@authenticated');
 
 Route::post('/search','PostsController@search');
 //Route::get('/single/{category}','PostsController@load_category');
-Route::get('/single/{id}','PostsController@load_single');
+Route::get('/single/','PostsController@load_single');
 Route::get('/single/phones','SinglesController@phones');
 Route::get('/single/tvs','SinglesController@tvs');
 Route::get('/single/elec','SinglesController@elec');

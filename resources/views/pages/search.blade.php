@@ -77,7 +77,9 @@
 
 
     <div class="site-section">
+            @if(count($posts) > 0))
             @foreach ($posts as $post)
+
       <div class="container">
 
         <div class="row">
@@ -117,7 +119,16 @@
 
         </div>
         @endforeach
+        @endif
     </div>
+
+    <footer class="card-footer fixed-bottom" id="footer">
+
+            <p>
+                &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited
+
+            </p>
+          </footer>
 
   </div>
 
