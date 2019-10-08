@@ -45,14 +45,16 @@
   <div class="row align-items-center">
     <!-- Align Egerton University Centre-->
     <div class="col-6 col-xl-2">
-      <h1 class="mb-0 site-logo"><a href="index.html" class="text-black mb-0"></a><span class="text-primary">Camposoko</span>  </h1>
+      {{-- <h1 class="mb-0 site-logo"><a href="index.html" class="text-black mb-0"></a><span class="text-primary">Camposoko</span>  </h1> --}}
+      <h1 class="mb-0 site-logo"><a href="/" class="text-black mb-0"><span class="text-primary" style="font-size:28pt">Camposoko</span></a></h1>
+
       <p id="university">Egerton University</p>
     </div>
     <div class="col-12 col-md-10 d-none d-xl-block">
       <nav class="site-navigation position-relative text-right" role="navigation">
 
         <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-          <li class="active"><a href="{{url('/')}}">Home</a></li>
+          <li><a href="{{url('/')}}">Home</a></li>
          <!-- <li><a href="listings.html">Ads</a></li> -->
          <li><a href="{{url('/about')}}">About</a></li>
           <li><a href="{{url('/contact')}}">Contact</a></li>

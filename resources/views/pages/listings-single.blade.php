@@ -22,10 +22,10 @@
     <link rel="stylesheet" href="css/rangeslider.css">
 
     <link rel="stylesheet" href="css/style.css">
-    
+
   </head>
   <body>
-  
+
   <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -36,21 +36,23 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-    
+
     <header class="site-navbar container py-0 bg-white" role="banner">
 
 <!-- <div class="container"> -->
   <div class="row align-items-center">
     <!-- Align Egerton University Centre-->
     <div class="col-6 col-xl-2">
-      <h1 class="mb-0 site-logo"><a href="index.html" class="text-black mb-0"></a><span class="text-primary">Camposoko</span>  </h1>
+      {{-- <h1 class="mb-0 site-logo"><a href="index.html" class="text-black mb-0"></a><span class="text-primary">Camposoko</span>  </h1> --}}
+      <h1 class="mb-0 site-logo"><a href="/" class="text-black mb-0"><span class="text-primary" style="font-size:28pt">Camposoko</span></a></h1>
+
       <p id="university">Egerton University</p>
     </div>
     <div class="col-12 col-md-10 d-none d-xl-block">
       <nav class="site-navigation position-relative text-right" role="navigation">
 
         <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-          <li class="active"><a href="{{url('/')}}">Home</a></li>
+          <li><a href="{{url('/')}}">Home</a></li>
          <!-- <li><a href="listings.html">Ads</a></li> -->
           <li class="has-children">
             <a href="{{url('/about')}}">About</a>
@@ -81,15 +83,15 @@
 <!-- </div> -->
 
 </header>
-  
-    
+
+
     <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/hero_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
 
           <div class="col-md-10" data-aos="fade-up" data-aos-delay="400">
-            
-            
+
+
             <div class="row justify-content-center mt-5">
               <div class="col-md-8 text-center">
                 <h1>Red Luxury Car</h1>
@@ -97,17 +99,17 @@
               </div>
             </div>
 
-            
+
           </div>
         </div>
       </div>
-    </div>  
+    </div>
 
     <div class="site-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            
+
             <div class="mb-4">
               <div class="slide-one-item home-slider owl-carousel">
                 <div><img src="images/img_1.jpg" alt="Image" class="img-fluid"></div>
@@ -116,7 +118,7 @@
                 <div><img src="images/img_4.jpg" alt="Image" class="img-fluid"></div>
               </div>
             </div>
-            
+
             <h4 class="h5 mb-4 text-black">Description</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error repellat architecto maiores vero, quasi dolor, accusantium autem aliquam, ullam sequi saepe illum eaque aperiam eius amet! Necessitatibus nam sapiente obcaecati sit, fugit omnis non sunt distinctio aliquid, quibusdam excepturi hic?</p>
             <!-- <p>Nisi, error. Molestias, quidem eaque sequi aut perspiciatis assumenda obcaecati ut quod eius reprehenderit. Iure rem numquam totam odio dignissimos aspernatur soluta. Corporis suscipit modi iste consequatur, repellat nihil omnis molestias optio. Dolorem ullam eius officia, eum ratione dolorum assumenda.</p>
@@ -155,7 +157,7 @@
                 </div>
               </form>
             </div> -->
-            
+
             <!-- <div class="mb-5">
               <form action="#" method="post">
                 <div class="form-group">
@@ -216,7 +218,7 @@
     </div>
 
     <footer class="card-footer" id="footer">
-      
+
       <p>
           &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited
 
@@ -238,6 +240,6 @@
   <script src="js/rangeslider.min.js"></script>
 
   <script src="js/main.js"></script>
-    
+
   </body>
 </html>

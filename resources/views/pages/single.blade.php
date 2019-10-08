@@ -46,15 +46,17 @@
                         <div class="row align-items-center">
                             <!-- Align Egerton University Centre-->
                             <div class="col-6 col-xl-2">
-                                <h1 class="mb-0 site-logo"><a href="index.html" class="text-black mb-0"></a><span
-                                        class="text-primary">Camposoko</span> </h1>
+                                {{-- <h1 class="mb-0 site-logo"><a href="index.html" class="text-black mb-0"></a><span
+                                        class="text-primary">Camposoko</span> </h1> --}}
+                                        <h1 class="mb-0 site-logo"><a href="/" class="text-black mb-0"><span class="text-primary" style="font-size:28pt">Camposoko</span></a></h1>
+
                                 <p id="university">Egerton University</p>
                             </div>
                             <div class="col-12 col-md-10 d-none d-xl-block">
                                 <nav class="site-navigation position-relative text-right" role="navigation">
 
                                     <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                                        <li class="active"><a href="{{url('/')}}">Home</a></li>
+                                        <li><a href="{{url('/')}}">Home</a></li>
                                         <li><a href="{{url('/about')}}">About</a></li>
 
                                         <li><a href="{{url('/contact')}}">Contact</a></li>
@@ -85,8 +87,11 @@
     {{-- @if(@isset($post)) --}}
 
 
-    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/hero_1.jpg); "
-    data-aos="fade" data-stellar-background-ratio="0.5">
+    @if(@isset($img))
+    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url({{$img}}); "
+    data-aos="fade" data-stellar-background-ratio="0.8">
+
+    @endif
     <div class="container">
         <div class="row align-items-center justify-content-center text-center">
 
@@ -118,30 +123,35 @@
         <div class="site-section">
                 <div class="container">
 
-                    @foreach ($post as $post)
-                    @if($post)
+
 
 
 
 
                         <div class="row">
+                                @foreach ($post as $post)
+                                @if($post)
                             <div class="col-sm-6 col-lg-4 mb-3">
                                 <div class="card mb-3 h-100">
-                                    {{-- <img class="card-img-top" src="{{ asset('storage/ads/'.$post->imgUrl1) }}"  alt="Not found" style="width:100%"> --}}
+                                <a href="" onclick="openLone({{$post->id}})"">
+                                        <img class="card-img" src="{{ asset('storage/ads/'.$post->imgUrl1) }}"  alt="Not found" style="width:100%">
+                                    </a>
                                     <div class="card-body">
-                                        <h5 class="card-title">{{$post->pname}}</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                            additional content. This content is a little bit longer.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <h4 class="card-title">{{$post->pname}}</h4>
+                                        <p class="card-text">{{$post->shortDesc}}</p>
+                                    <div class="price text-success"><h5 class="mt-4">Ksh.{{$post->price}}</h5></div>
+
+
+
                                     </div>
                                 </div>
                             </div>
-
+                                 @endif
+                                @endforeach
                         </div>
 
 
-                        @endif
-                        @endforeach
+
                     </div>
         </div>
         {{-- <div class="card-deck">

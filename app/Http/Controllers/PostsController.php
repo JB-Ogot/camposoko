@@ -51,6 +51,17 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,User $user){
+        $validator = Validator::make($request->all(),[
+
+            'img' => 'required|image|mimes:jpg,png,jpeg,gif|max:1999'
+        ]);
+        if($validator->fails()){
+            return redirect('/info')
+                                    ->withError($validator)
+                                    ->withInput();
+
+
+        }
 
 
 
