@@ -66,9 +66,14 @@
                                     <input class="form-check-input" type="checkbox" required name="terms" id="terms" {{ old('terms') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="">
-                                            I agree to <a href="{{ route('terms') }}">Terms and Conditions</a>
-                                        {{-- {{ __(' I agree to <a>Terms and Conditions</a>') }} --}}
+                                            {{-- I agree to <a href="{{ route('terms') }}">Terms and Conditions</a>--}}
+                                        <span>I agree to</span><a class="" href="/terms">{{__(' Terms and Conditions') }}</a>
+                                        {{-- <a class="btn btn-link" href="{{ route('register') }}">
+                                            I agree to{{ __('Terms and Conditions') }}
+                                        </a> --}}
                                     </label>
+
+
                                 </div>
                             </div>
                         </div>

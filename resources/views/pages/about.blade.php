@@ -58,7 +58,7 @@
                 <!-- <li class="ml-xl-3 login"><a href="login.html"><span class="border-left pl-xl-4"></span>Log In</a></li>
                 <li><a href="register.html">Register</a></li> -->
                 <li><a href="{{url('/login')}}" class="cta"><span class="bg-success text-white rounded">+ Post an Ad</span></a></li>
-                <li><a href="{{url('/login')}}" class="cta" ><span id="rmadd" class="bg-danger text-white rounded ">+ Remove an Ad</span></a></li>
+                <li><a href="{{url('/posts/listrem')}}" class="cta" ><span id="rmadd" class="bg-danger text-white rounded ">+ Remove an Ad</span></a></li>
 
                </ul>
             </nav>
@@ -144,12 +144,11 @@
       </div>
     </div>
 
-    <footer class="card-footer fixed-bottom" id="footer">
+    <footer class="card-footer" id="footer">
+        <p style="text-align:center">
+            &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited  | Made with Colorlib
 
-            <p>
-                &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited
-
-            </p>
+        </p>
           </footer>
   </div>
 

@@ -10,6 +10,11 @@
 
      window.open(url,'_self');
  }
+ function deleteImage(id){
+     event.preventDefault();
+     var url="/posts/?id="+id+"/delete";
+     window.open(url,'_self');
+ }
 
 jQuery(document).ready(function($) {
 

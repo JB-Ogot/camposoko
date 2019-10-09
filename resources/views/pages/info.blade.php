@@ -63,7 +63,7 @@
           <li><a href="register.html">Register</a></li> -->
 
           <li><a href="{{url('/login')}}" class="cta"><span class="bg-success text-white rounded">+ Post an Ad</span></a></li>
-          <li><a href="{{url('/login')}}" class="cta" ><span id="rmadd" class="bg-danger text-white rounded ">+ Remove an Ad</span></a></li>
+          <li><a href="{{url('/posts/listrem')}}" class="cta" ><span id="rmadd" class="bg-danger text-white rounded ">+ Remove an Ad</span></a></li>
 
         </ul>
       </nav>
@@ -116,7 +116,7 @@
                                     <label class="text-black" for="category">Category</label>
 
                                     <div>
-                                        <select name="category" id="category">
+                                        <select name="category" id="category" required>
                                             <option value="" disabled selected>Choose Category</option>
                                             <option value="Phones & Laptops">Phones & Laptops</option>
                                             <option value="TVs & Woofers">TVs & Woofers</option>
@@ -139,7 +139,7 @@
 
                                 <div class="col-md-12">
                                     <label class="text-black" for="make">Product Name</label>
-                                    <input type="text" onfocus="this.value=''" value="e.g Samsung j7,Total gas, 4X6 bed, Spacious Bedsitter, Photographer" name="pname" class="form-control">
+                                    <input type="text" onfocus="this.value=''" value="e.g Samsung j7,Total gas, 4X6 bed, Spacious Bedsitter, Photographer" name="pname" class="form-control" required>
                                 </div>
                             </div>
 
@@ -217,12 +217,7 @@
                                                 <label for="">Choose Image</label>
 
                                                 <label>
-                                                <input id="file" type="file" name="img" class="image-upload" multiple />
-{{--
-                                                <input id="file" type="file" name="img1" class="image-upload" accept="image/*" />
-
-                                                <input id="file" type="file" name="img1" class="image-upload" accept="image/*" />
-                                                 --}}
+                                                <input id="file" type="file" name="img[]" class="image-upload" multiple />
                                                 </label>
                                           </div>
                                       </div>
@@ -247,15 +242,25 @@
                 </div>
             </div>
         </div>
+        @if (count($errors) > 0)
+        <div class="alert alert-danger">
+          <strong>Whoops!</strong> There were some problems with your input.<br><br>
+          <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
 
-        <footer class="card-footer fixed-bottom" id="footer">
+        <footer class="card-footer" id="footer">
 
-                <p>
-                    &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited
+            <p style="text-align:center">
+                &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited  | Made with Colorlib
 
-                </p>
+            </p>
               </footer>
- </div>
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>

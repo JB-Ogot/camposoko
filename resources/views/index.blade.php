@@ -61,7 +61,7 @@
           <li><a href="register.html">Register</a></li> -->
 
           <li><a href="{{url('/login')}}" class="cta"><span class="bg-success text-white rounded">+ Post an Ad</span></a></li>
-          <li><a href="{{url('/login')}}" class="cta" ><span id="rmadd" class="bg-danger text-white rounded ">+ Remove an Ad</span></a></li>
+          <li><a href="{{url('/posts/listrem')}}" class="cta" ><span id="rmadd" class="bg-danger text-white rounded ">+ Remove an Ad</span></a></li>
         </ul>
       </nav>
     </div>
@@ -262,14 +262,14 @@
 </div>
 </div>
 
-    <footer class="card-footer fixed-bottom" id="footer">
+    <footer class="card-footer" id="footer">
 
-        <p>
-            &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited
+        <p style="text-align:center">
+            &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited  | Made with Colorlib
 
         </p>
       </footer>
-      <script type="tect/js">
+      <script type="text/javascript">
         window.alert("ok");
       </script>
 

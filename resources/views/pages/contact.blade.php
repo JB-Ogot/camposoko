@@ -4,6 +4,7 @@
     <title>Camposoko</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Campus Online market">
 
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
@@ -59,7 +60,7 @@
 
 
           <li><a href="{{url('/login')}}" class="cta"><span class="bg-success text-white rounded">+ Post an Ad</span></a></li>
-          <li><a href="{{url('/login')}}" class="cta" ><span id="rmadd" class="bg-danger text-white rounded ">+ Remove an Ad</span></a></li>
+          <li><a href="{{url('/posts/listrem')}}" class="cta" ><span id="rmadd" class="bg-danger text-white rounded ">+ Remove an Ad</span></a></li>
 
         </ul>
       </nav>
@@ -174,12 +175,11 @@
 
 
 
-    <footer class="card-footer fixed-bottom" id="footer">
+    <footer class="card-footer" id="footer">
+        <p style="text-align:center">
+            &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited  | Made with Colorlib
 
-            <p>
-                &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited
-
-            </p>
+        </p>
           </footer>
   </div>
 

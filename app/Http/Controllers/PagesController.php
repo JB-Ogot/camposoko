@@ -47,5 +47,10 @@ class PagesController extends Controller
     public function info(){
         return view('pages.info');
     }
+    public function terms(){
+        return view('pages.terms');
+
+    }
+
 
 }

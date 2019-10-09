@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 //use \Input as Input;
 use Symfony\Component\Console\Input\Input;
 
@@ -26,6 +28,7 @@ class PostsController extends Controller
 
     {
         // $posts = Post::orderBy('id','DESC')->get(10);
+        // $posts = auth()->user()->posts()->orderBy('updated_at', 'DESC');
         $posts = Post::latest()->get();
 
         return view('index')->with('posts', $posts);
@@ -51,49 +54,40 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,User $user){
-        $validator = Validator::make($request->all(),[
-
+        $this->validate($request,[
             'img' => 'required|image|mimes:jpg,png,jpeg,gif|max:1999'
         ]);
-        if($validator->fails()){
-            return redirect('/info')
-                                    ->withError($validator)
-                                    ->withInput();
-
-
-        }
 
 
 
         $input = $request->all();
         if($request->hasFile('img')){
-            $img = $request->file('img');
+            foreach($request->hasFile('img') as $img){
+                print($img);
+            }
+            // $img = $request->file('img');
 
-            $fileNameWithExt = $img->getClientOriginalName();
-            $img2 = Image::make($img->getRealPath());
-            $img = $img2->resize(1900,1600);
-            //$image_resize->save(public_path('images/ServiceImages/' .$filename));
-            $img2->save(public_path('storage/ads/' .$fileNameWithExt));
-            //$path = $img2->storeAs('public/ads', $fileNameWithExt);
+            // $fileNameWithExt = $img->getClientOriginalName();
+            // $img2 = Image::make($img->getRealPath());
+            // $img = $img2->resize(1900,1600);
+            // $img2->save(public_path('storage/ads/' .$fileNameWithExt));
 
-                $id = auth()->user()->id;
+            //     $id = auth()->user()->id;
 
-            Post::insert([
-                'category' => $input['category'],
-                'pname' => $input['pname'],
-                'user_id' => $id,
-                'condition' => $input['condition'],
-                'ShortDesc' => $input['shortDesc'],
-                'price' => $input['price'],
-            //    'imgSize' => implode("|",$data['size']),
-                'details' => $input['details'],
-                'location' => $input['location'],
-                'negotiable' =>$input['negotiable'],
-            //    'imgUrl1' => implode("|",$data),
-                'imgUrl1' => $fileNameWithExt
-            ]);
+            // Post::insert([
+            //     'category' => $input['category'],
+            //     'pname' => $input['pname'],
+            //     'user_id' => $id,
+            //     'condition' => $input['condition'],
+            //     'ShortDesc' => $input['shortDesc'],
+            //     'price' => $input['price'],
+            //     'details' => $input['details'],
+            //     'location' => $input['location'],
+            //     'negotiable' =>$input['negotiable'],
+            //     'imgUrl1' => $fileNameWithExt
+            // ]);
 
-            return redirect('/info');
+            // return redirect('/info');
 
 
         }
@@ -144,7 +138,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        $posts = auth()->user()->posts()->orderBy('updated_at', 'DESC');
+        $post = Post::find($id);
+        $post->delete();
+        return redirect('/posts/listrem');
+        // print($id);
         //
     }
     public function search(Request $request){
@@ -173,6 +170,30 @@ class PostsController extends Controller
             if($post->id == $id)
                return view('pages.lone')->with('post',$post);
         }
+    }
+    public function remove(){
+        $id = auth()->user()->id;
+        // $post = Post::find($id);
+        $post = \DB::table('posts')->where('user_id','like','%'.$id.'%')->paginate(10);
+        // $post = Post::all();
+        // foreach($post as $post){
+        //     if($post->user_id == $id)
+        //     // return view('pages.delete')->with();
+
+        // }
+
+        $message = "success";
+        $message2 = "Null";
+        if($post!=null){
+            return view('pages.delete')->with(array(
+                'post'=>$post,
+                'message'=>$message
+            ));
+
+        }else{
+            return redirect()->back()->withInput()->with('message',$message2);
+        }
+
     }
 
 

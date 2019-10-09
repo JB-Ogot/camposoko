@@ -143,12 +143,11 @@
         </div>
 </div>
 
-<footer class="card-footer fixed-bottom" id="footer">
+<footer class="card-footer" id="footer">
+    <p style="text-align:center">
+        &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited  | Made with Colorlib
 
-        <p>
-            &copy;<script>document.write(new Date().getFullYear());</script> Product of Mervonn Kenya Limited
-
-        </p>
+    </p>
       </footer>
 
 <script type="text/javascript">
