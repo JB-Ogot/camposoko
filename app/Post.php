@@ -8,8 +8,12 @@ class Post extends Model
 {
     public $timestamps = true;
 
-    protected $fillable = ['category','pname','condtion','shortDesc','negotiable','price','created_at','details','location','imageUrl1'];
-    //
+    protected $fillable = ['category','pnam','condtion','shortDesc','negotiable','price','timestamp','details','location','imageUrl1'];
+
+
+    protected $casts = [
+        'imageUrl1' => 'array'
+    ];
     public function user(){
         return $this->belongsTo('App\User');
     }

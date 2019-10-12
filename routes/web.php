@@ -25,8 +25,7 @@ Route::get('/terms','PagesController@terms');
 Route::get('/posts/payment', function () {
     // Only authenticated users may enter...
 })->middleware('auth');
-//Route::post('/login','PagesController@login');
-//Route::post('register','/Auth/RegisterController@create');
+
 Route::post('/posts/store','PostsController@store');
 Route::post('/posts/messages','MessageController@save');
 Route::post('/posts/payup','PostsController@payup');
@@ -47,7 +46,7 @@ Route::post('/posts/authenticated','PostsController@authenticated');
 Route::post('/search','PostsController@search');
 
 //Route::get('/single/{category}','PostsController@load_category');
-Route::get('/single/','PostsController@load_single');
+Route::get('/posts/single/{id}','PostsController@load_single');
 Route::get('/single/phones','SinglesController@phones');
 Route::get('/single/tvs','SinglesController@tvs');
 Route::get('/single/elec','SinglesController@elec');

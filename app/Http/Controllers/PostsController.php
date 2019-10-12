@@ -27,12 +27,78 @@ class PostsController extends Controller
     public function index()
 
     {
-        // $posts = Post::orderBy('id','DESC')->get(10);
-        // $posts = auth()->user()->posts()->orderBy('updated_at', 'DESC');
+        $pl=0;
+        $tw=0;
+        $elec=0;
+        $house=0;
+        $fun = 0;
+        $apart=0;
+        $beat=0;
+        $event=0;
+        $prof=0;
+        $wait=0;
+        $food=0;
+        $bar=0;
+
+        $post_category = Post::all();
+        foreach($post_category->category as $cat){
+            switch($cat){
+                case 'TVs & Woofers':
+                    $tw++;
+                    break;
+                case 'Electronics':
+                    $elec++;
+                    break;
+                case 'Furniture':
+                    $fun++;
+                    break;
+                case 'Phones & Laptops':
+                    $pl++;
+                    break;
+                case 'Apartment & Hostels':
+                    $apart++;
+                    break;
+                case 'Beauty & Fashion':
+                    $beat++;
+                    break;
+                case 'Events & Posters':
+                    $event++;
+                    break;
+                case 'Professional Services':
+                    $prof++;
+                    break;
+                case 'Waiting':
+                    $wait++;
+                    break;
+                case 'Food & Restaurants':
+                    $food++;
+                    break;
+                case 'Bars & Clubs':
+                    $bar++;
+                    break;
+
+
+            }
+        }
         $posts = Post::latest()->get();
 
-        return view('index')->with('posts', $posts);
-        //printf($posts);
+        return view('index')->with(array(
+            'posts'=> $posts,
+            'pl'=>$pl,
+            'tw'=>$tw,
+            'elec'=> $elec,
+            'house'=>$house,
+            'fun'=>$fun,
+            'apart'=>$apart,
+            'beat'=>$beat,
+            'event'=>$event,
+            'prof'=>$prof,
+            'wait'=>$wait,
+            'food'=>$food,
+            'bar'=>$bar,
+
+
+        ));
 
 
     }
@@ -54,42 +120,49 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,User $user){
-        $this->validate($request,[
-            'img' => 'required|image|mimes:jpg,png,jpeg,gif|max:1999'
-        ]);
+        // $this->validate($request,[
+        //      'img' => 'required|image|mimes:jpg,png,jpeg,gif|max:1999'
+        //  ]);
 
-
-
+        $count = 0;
+        $images=[];
         $input = $request->all();
         if($request->hasFile('img')){
-            foreach($request->hasFile('img') as $img){
-                print($img);
+          // print_r($request->all());
+            foreach( $request->file('img') as $img){
+            $fileNameWithExt = $img->getClientOriginalName();
+            $ext = $img->getClientOriginalExtension();
+            $fileNameToStore = $fileNameWithExt.'_'.time().'.'.$ext;
+            // print($fileNameToStore);
+            $img_resize = Image::make($img)->resize(1900,1600);
+            $path = 'storage/ads';
+            if (!file_exists($path)) {
+                mkdir($path, 666, true);
             }
-            // $img = $request->file('img');
-
-            // $fileNameWithExt = $img->getClientOriginalName();
-            // $img2 = Image::make($img->getRealPath());
-            // $img = $img2->resize(1900,1600);
-            // $img2->save(public_path('storage/ads/' .$fileNameWithExt));
-
-            //     $id = auth()->user()->id;
-
-            // Post::insert([
-            //     'category' => $input['category'],
-            //     'pname' => $input['pname'],
-            //     'user_id' => $id,
-            //     'condition' => $input['condition'],
-            //     'ShortDesc' => $input['shortDesc'],
-            //     'price' => $input['price'],
-            //     'details' => $input['details'],
-            //     'location' => $input['location'],
-            //     'negotiable' =>$input['negotiable'],
-            //     'imgUrl1' => $fileNameWithExt
-            // ]);
-
-            // return redirect('/info');
+            $img_resize->save(public_path('storage/ads/' .$fileNameWithExt));
+            array_push($images,$fileNameWithExt);
+            }
 
 
+
+            $id = auth()->user()->id;
+            $post = new Post();
+            $post->category = $input['category'];
+
+            $post->pname = $input['pname'];
+            $post->user_id = $id;
+            $post->condition = $input['condition'];
+            $post->shortDesc = $input['shortDesc'];
+            $post->price = $input['price'];
+            $post->details = $input['details'];
+            $post->number = $input['number'];
+            $post->location = $input['location'];
+            $post->negotiable =$input['negotiable'];
+            $post->imgUrl1 = json_encode($images);
+            $post->save();
+
+            return redirect('/posts/listrem')->with('message','You have Successfuly saved an image');
+            // print_r($request->all());
         }
     }
 
@@ -153,34 +226,23 @@ class PostsController extends Controller
         // print($post->id);
 
     }
-    // public function load_category($category){
 
-    //     $post = \DB::table('posts')->where('category','like','%'.$category. '%')->paginate(10);
-    //     return view('pages.single')->with('post',$post);
-
-    // }
-    public function load_single(){
-        $id = request('id');
+    public function load_single($id){
+        // $id = request('id');
         // $post = \DB::table('posts')->where('id','like','%'.$id. '%');
 
         // return view('pages.lone')->with('post',$post);
 
-        $post = Post::all();
-        foreach($post as $post){
-            if($post->id == $id)
-               return view('pages.lone')->with('post',$post);
-        }
+        $post = Post::find($id);
+        return view('pages.lone')->with('post',$post);
+
+
     }
     public function remove(){
         $id = auth()->user()->id;
         // $post = Post::find($id);
         $post = \DB::table('posts')->where('user_id','like','%'.$id.'%')->paginate(10);
-        // $post = Post::all();
-        // foreach($post as $post){
-        //     if($post->user_id == $id)
-        //     // return view('pages.delete')->with();
 
-        // }
 
         $message = "success";
         $message2 = "Null";

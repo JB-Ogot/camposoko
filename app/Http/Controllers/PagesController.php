@@ -10,7 +10,7 @@ class PagesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth',['except'=>['index','show','about','blog','payment','contact','login','register']]);
+        $this->middleware('auth',['except'=>['index','show','about','blog','payment','contact','login','register',]]);
     }
     public function index(){
         // $posts = DB::select('select * from posts');
@@ -18,9 +18,87 @@ class PagesController extends Controller
         // return view('index',['posts'->$posts]);
         $posts = Post::all();
 
-        return view('index',['posts'=>$posts]);
+        $pl=0;
+        $tw=0;
+        $elec=0;
+        $house=0;
+        $fun = 0;
+        $apart=0;
+        $beat=0;
+        $event=0;
+        $prof=0;
+        $wait=0;
+        $food=0;
+        $bar=0;
+
+        foreach($posts as $post){
+            $cat = $post->category;
+
+        switch($cat){
+                case 'TVs & Woofers':
+                    $tw++;
+                    break;
+                case 'Electronics':
+                    $elec++;
+                    break;
+                case 'Furniture':
+                    $fun++;
+                    break;
+                case 'Phones & Laptops':
+                    $pl++;
+                    break;
+                case 'Apartment & Hostels':
+                    $apart++;
+                    break;
+                case 'Beauty & Fashion':
+                    $beat++;
+                    break;
+                case 'Events & Posters':
+                    $event++;
+                    break;
+                case 'Professional Services':
+                    $prof++;
+                    break;
+                case 'Waiting':
+                    $wait++;
+                    break;
+                case 'Food & Restaurants':
+                break;
+                    $food++;
+                case 'Bars & Clubs':
+                    $bar++;
+                    break;
+
+
+            }
+        }
+
+        // print($bar);
+
+              $posts = Post::latest()->get();
+
+            return view('index')->with(array(
+                'posts'=> $posts,
+                'pl'=>$pl,
+                'tw'=>$tw,
+                'elec'=> $elec,
+                'house'=>$house,
+                'fun'=>$fun,
+                'apart'=>$apart,
+                'beat'=>$beat,
+                'event'=>$event,
+                'prof'=>$prof,
+                'wait'=>$wait,
+                'food'=>$food,
+                'bar'=>$bar,
+
+
+            ));
+
 
     }
+
+
     public function about(){
         return view('pages.about');
     }

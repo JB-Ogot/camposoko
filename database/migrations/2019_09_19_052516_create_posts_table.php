@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('negotiable');
             $table->mediumText('shortDesc');
             $table->string('price')->nullable();
+            $table->string('number');
             $table->mediumText('details')->nullable();
             $table->string('location')->nullable();
             $table->string('imgUrl1')->nullable();

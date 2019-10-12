@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Post;
 
 use Illuminate\Http\Request;
 
@@ -23,6 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.info');
+        return view('index');
+         // $posts = auth()->user()->posts()->orderBy('updated_at', 'DESC');
+        //  $posts = Post::latest()->get();
+
+        //  return view('index')->with('posts', $posts);
     }
 }
