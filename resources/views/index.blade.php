@@ -188,7 +188,7 @@
             @if (@isset($house))
             <div class="col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
                     <a href="/single/house" class="popular-category h-100">
-                      <i class="fal fa-flashlight fa-4x"></i>
+                      <i class="fa fa-mug-hot fa-4x"></i>
 
                       <span class="caption mb-2 d-block">Household Items</span>
                     <span class="number">{{$house}}</span>

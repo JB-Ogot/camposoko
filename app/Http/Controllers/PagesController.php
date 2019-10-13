@@ -75,7 +75,7 @@ class PagesController extends Controller
 
         // print($bar);
 
-              $posts = Post::latest()->get();
+              $posts = Post::latest()->take(15)->get();
 
             return view('index')->with(array(
                 'posts'=> $posts,
@@ -100,7 +100,7 @@ class PagesController extends Controller
 
 
     public function about(){
-        return view('pages.about');
+        return view('pages.payment');
     }
     public function blog(){
         return view('pages.blog');

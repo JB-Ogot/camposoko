@@ -81,6 +81,7 @@ class PostsController extends Controller
             }
         }
         $posts = Post::latest()->get();
+        // $posts = DB::table('posts')->limit(2)->get;
 
         return view('index')->with(array(
             'posts'=> $posts,
@@ -121,6 +122,11 @@ class PostsController extends Controller
      */
     public function store(Request $request,User $user){
         // $this->validate($request,[
+        //     'price'=>'required',
+        //     'img'=>'required',
+        //     'img.*'=>'mimes:jpg,jpeg,png|max:2048'
+        // ]);
+        // $this->validate($request,[
         //      'img' => 'required|image|mimes:jpg,png,jpeg,gif|max:1999'
         //  ]);
 
@@ -134,7 +140,7 @@ class PostsController extends Controller
             $ext = $img->getClientOriginalExtension();
             $fileNameToStore = $fileNameWithExt.'_'.time().'.'.$ext;
             // print($fileNameToStore);
-            $img_resize = Image::make($img)->resize(1900,1600);
+            $img_resize = Image::make($img)->resize(1900,1600)->encode('jpg',85);
             $path = 'storage/ads';
             if (!file_exists($path)) {
                 mkdir($path, 666, true);

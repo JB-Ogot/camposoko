@@ -67,7 +67,7 @@
 
                                     <label class="form-check-label" for="">
                                             {{-- I agree to <a href="{{ route('terms') }}">Terms and Conditions</a>--}}
-                                        <span>I agree to</span><a class="" href="/terms">{{__(' Terms and Conditions') }}</a>
+                                        <span>I agree to</span><a class="" href="terms">{{__(' Terms and Conditions') }}</a>
 
                                     </label>
 

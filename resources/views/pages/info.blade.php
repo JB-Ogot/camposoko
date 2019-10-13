@@ -239,7 +239,7 @@
                                                 <label for="">Choose 3 Images</label>
 
                                                 <label>
-                                                <input id="file" type="file" name="img[]" class="image-upload" multiple="multiple" />
+                                                <input id="file" type="file" onchange="previewFilw()" name="img[]" class="image-upload" multiple="multiple" />
                                                 </label>
                                           </div>
                                       </div>
@@ -282,6 +282,21 @@
 
             </p>
               </footer>
+    <script type="text/javascript">
+        function previewFile() {
+        var preview = document.querySelector('file');
+        var file    = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+
+  reader.addEventListener("load", function () {
+    preview.src = reader.result;
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+    </script>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>

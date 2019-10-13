@@ -103,6 +103,14 @@
                             </div>
                         </div>
                     </div>
+                        @else
+                        <div class="col-sm-6 col-lg-4 mb-3">
+                            <div class="card-body">
+                                <h4 class="card-title"></h4>
+                                <p class="card-text"></p>
+                            <div class="price text-success"><h5 class="mt-4">No Posts Found</h5></div>
+
+                        </div>
                          @endif
                         @endforeach
                 </div>
